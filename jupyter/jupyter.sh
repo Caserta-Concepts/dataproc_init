@@ -11,10 +11,10 @@ DATAPROC_BUCKET=$(curl -f -s -H Metadata-Flavor:Google http://metadata/computeMe
 # Colon-separated list of conda packages to install, for example 'numpy:pandas'
 JUPYTER_CONDA_PACKAGES=$(curl -f -s -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/JUPYTER_CONDA_PACKAGES || true)
 
-echo "Cloning fresh dataproc-initialization-actions from repo $INIT_ACTIONS_REPO and branch $INIT_ACTIONS_BRANCH..."
+echo "Cloning fresh dataproc_init from repo $INIT_ACTIONS_REPO and branch $INIT_ACTIONS_BRANCH..."
 git clone -b "$INIT_ACTIONS_BRANCH" --single-branch $INIT_ACTIONS_REPO
 # Ensure we have conda installed.
-./dataproc-initialization-actions/conda/bootstrap-conda.sh
+./dataproc_init/conda/bootstrap-conda.sh
 #./dataproc-initialization-actions/conda/install-conda-env.sh
 
 source /etc/profile.d/conda_config.sh
@@ -34,8 +34,8 @@ if [[ "${ROLE}" == 'Master' ]]; then
         echo "Pulling notebooks directory to cluster master node..."
         gsutil -m cp -r gs://$DATAPROC_BUCKET/notebooks /root/
     fi
-    ./dataproc-initialization-actions/jupyter/internal/setup-jupyter-kernel.sh
-    ./dataproc-initialization-actions/jupyter/internal/launch-jupyter-kernel.sh
+    ./dataproc_init/jupyter/internal/setup-jupyter-kernel.sh
+    ./dataproc_init/jupyter/internal/launch-jupyter-kernel.sh
 fi
 echo "Completed installing Jupyter!"
 
