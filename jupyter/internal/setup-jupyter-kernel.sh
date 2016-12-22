@@ -29,8 +29,8 @@ echo "c.NotebookApp.token = u'$JUPYTER_AUTH_TOKEN'" >> ~/.jupyter/jupyter_notebo
 echo "c.NotebookApp.contents_manager_class = 'jgscm.GoogleStorageContentManager'" >> ~/.jupyter/jupyter_notebook_config.py
 ######## Added by KR ########
 echo "Installing pyspark Kernel..."
-JUPYTER_KERNEL_DIR='/dataproc-initialization-actions/jupyter/kernels/pyspark'
-KERNEL_GENERATOR='/dataproc-initialization-actions/jupyter/kernels/generate_pyspark.sh'
+JUPYTER_KERNEL_DIR='/dataproc-init/jupyter/kernels/pyspark'
+KERNEL_GENERATOR='/dataproc-init/jupyter/kernels/generate_pyspark.sh'
 chmod 750 ${KERNEL_GENERATOR}
 mkdir -p ${JUPYTER_KERNEL_DIR}
 ${KERNEL_GENERATOR} > "${JUPYTER_KERNEL_DIR}/kernel.json"

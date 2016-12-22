@@ -48,7 +48,7 @@ fi
 if [[ "$INSTALL_JUPYTER_EXT" = true ]]
 then
     echo "Installing Jupyter Notebook extensions..."
-    ./dataproc-initialization-actions/jupyter/internal/bootstrap-jupyter-ext.sh
+    ./dataproc_init/jupyter/internal/bootstrap-jupyter-ext.sh
     echo "Jupyter Notebook extensions installed!"
 fi
 
