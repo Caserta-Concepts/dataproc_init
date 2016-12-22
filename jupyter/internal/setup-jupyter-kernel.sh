@@ -25,7 +25,9 @@ echo "c.NotebookApp.open_browser = False" >> ~/.jupyter/jupyter_notebook_config.
 echo "c.NotebookApp.port = $JUPYTER_PORT" >> ~/.jupyter/jupyter_notebook_config.py
 echo "c.NotebookApp.notebook_dir = '$JUPYTER_NOTEBOOK_DIR'" >> ~/.jupyter/jupyter_notebook_config.py
 echo "c.NotebookApp.token = u'$JUPYTER_AUTH_TOKEN'" >> ~/.jupyter/jupyter_notebook_config.py
-
+######## Added by KR ########
+echo "c.NotebookApp.contents_manager_class = 'jgscm.GoogleStorageContentManager'" >> ~/.jupyter/jupyter_notebook_config.py
+######## Added by KR ########
 echo "Installing pyspark Kernel..."
 JUPYTER_KERNEL_DIR='/dataproc-initialization-actions/jupyter/kernels/pyspark'
 KERNEL_GENERATOR='/dataproc-initialization-actions/jupyter/kernels/generate_pyspark.sh'

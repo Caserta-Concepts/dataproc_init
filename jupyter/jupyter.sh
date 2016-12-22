@@ -25,6 +25,10 @@ if [ -n "${JUPYTER_CONDA_PACKAGES}" ]; then
 fi
 
 if [[ "${ROLE}" == 'Master' ]]; then
+    ########  ADDED by KR  ##########
+    
+    pip install jgscm
+    ########  ADDED by KR  ##########
     conda install jupyter
     if gsutil -q stat "gs://$DATAPROC_BUCKET/notebooks/**"; then
         echo "Pulling notebooks directory to cluster master node..."
